@@ -1,0 +1,66 @@
+{
+  "patient": {
+    "name": "Thomas Bauer",
+    "dob": "1978-11-03",
+    "patient_id": "NHS-2024-TBR-00912",
+    "blood_type": "O+"
+  },
+  "gp": {
+    "name": "Dr. Sarah Collins"
+  },
+  "emergency_contact": {
+    "name": "Ingrid Bauer",
+    "phone": "+44 7911 123456"
+  },
+  "medications": [
+    {"name": "Metformin", "dose": "500mg",  "frequency": "Twice daily"},
+    {"name": "Lisinopril","dose": "10mg",   "frequency": "Once daily"},
+    {"name": "Aspirin",   "dose": "75mg",   "frequency": "Once daily"},
+    {"name": "",          "dose": "",       "frequency": ""}
+  ],
+  "allergies": "Penicillin (anaphylaxis), Sulfa drugs (rash)",
+  "consent": {
+    "treatment": true,
+    "data_gp": true,
+    "research": false
+  },
+  "signature": {
+    "patient": "T. Bauer",
+    "date": "2024-11-15"
+  },
+  "_expected_field_mapping": {
+    "patient_name":    {"source_key": "patient.name",              "value": "Thomas Bauer"},
+    "dob":             {"source_key": "patient.dob",               "value": "1978-11-03"},
+    "patient_id":      {"source_key": "patient.patient_id",        "value": "NHS-2024-TBR-00912"},
+    "gp_name":         {"source_key": "gp.name",                   "value": "Dr. Sarah Collins"},
+    "emergency_name":  {"source_key": "emergency_contact.name",    "value": "Ingrid Bauer"},
+    "emergency_phone": {"source_key": "emergency_contact.phone",   "value": "+44 7911 123456"},
+    "blood_apos":      {"source_key": "patient.blood_type",        "value": "/Off"},
+    "blood_aneg":      {"source_key": "patient.blood_type",        "value": "/Off"},
+    "blood_bpos":      {"source_key": "patient.blood_type",        "value": "/Off"},
+    "blood_bneg":      {"source_key": "patient.blood_type",        "value": "/Off"},
+    "blood_abpos":     {"source_key": "patient.blood_type",        "value": "/Off"},
+    "blood_abneg":     {"source_key": "patient.blood_type",        "value": "/Off"},
+    "blood_opos":      {"source_key": "patient.blood_type",        "value": "/Yes"},
+    "blood_oneg":      {"source_key": "patient.blood_type",        "value": "/Off"},
+    "blood_unknown":   {"source_key": "patient.blood_type",        "value": "/Off"},
+    "med1_name":       {"source_key": "medications[0].name",       "value": "Metformin"},
+    "med1_dose":       {"source_key": "medications[0].dose",       "value": "500mg"},
+    "med1_freq":       {"source_key": "medications[0].frequency",  "value": "Twice daily"},
+    "med2_name":       {"source_key": "medications[1].name",       "value": "Lisinopril"},
+    "med2_dose":       {"source_key": "medications[1].dose",       "value": "10mg"},
+    "med2_freq":       {"source_key": "medications[1].frequency",  "value": "Once daily"},
+    "med3_name":       {"source_key": "medications[2].name",       "value": "Aspirin"},
+    "med3_dose":       {"source_key": "medications[2].dose",       "value": "75mg"},
+    "med3_freq":       {"source_key": "medications[2].frequency",  "value": "Once daily"},
+    "med4_name":       {"source_key": "medications[3].name",       "value": ""},
+    "med4_dose":       {"source_key": "medications[3].dose",       "value": ""},
+    "med4_freq":       {"source_key": "medications[3].frequency",  "value": ""},
+    "allergies":       {"source_key": "allergies",                 "value": "Penicillin (anaphylaxis), Sulfa drugs (rash)"},
+    "consent_treatment":{"source_key": "consent.treatment",        "value": "/Yes"},
+    "consent_data_gp": {"source_key": "consent.data_gp",          "value": "/Yes"},
+    "consent_research":{"source_key": "consent.research",         "value": "/Off"},
+    "patient_signature":{"source_key": "signature.patient",       "value": "T. Bauer"},
+    "signature_date":  {"source_key": "signature.date",           "value": "2024-11-15"}
+  }
+}

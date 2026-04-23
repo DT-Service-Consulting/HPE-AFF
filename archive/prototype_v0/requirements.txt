@@ -1,0 +1,5 @@
+﻿azure-ai-inference
+azure-core
+pypdf
+streamlit
+pandas

@@ -1,0 +1,37 @@
+{
+  "applicant": {
+    "surname": "Kowalski",
+    "first_name": "Marta",
+    "dob": "1995-07-22",
+    "nationality": "Polish",
+    "email": "marta.kowalski@email.com",
+    "phone": "+48 600 123 456",
+    "linkedin": "https://linkedin.com/in/marta-kowalski"
+  },
+  "position": {
+    "role_title": "Senior Data Engineer",
+    "department": "Engineering",
+    "employment_type": "Full-time",
+    "available_from": "2025-02-01",
+    "salary_expectation": "75000"
+  },
+  "cover_note": "I am an experienced data engineer with 5+ years building scalable pipelines on Azure and AWS. I am excited by CIED's mission to automate form processing at scale and believe my background in structured data extraction is a strong match for this role.",
+  "_expected_field_mapping": {
+    "surname":           {"source_key": "applicant.surname",           "value": "Kowalski"},
+    "first_name":        {"source_key": "applicant.first_name",        "value": "Marta"},
+    "dob":               {"source_key": "applicant.dob",               "value": "1995-07-22"},
+    "nationality":       {"source_key": "applicant.nationality",       "value": "Polish"},
+    "email":             {"source_key": "applicant.email",             "value": "marta.kowalski@email.com"},
+    "phone":             {"source_key": "applicant.phone",             "value": "+48 600 123 456"},
+    "linkedin":          {"source_key": "applicant.linkedin",          "value": "https://linkedin.com/in/marta-kowalski"},
+    "role_title":        {"source_key": "position.role_title",         "value": "Senior Data Engineer"},
+    "department":        {"source_key": "position.department",         "value": "Engineering"},
+    "emp_fulltime":      {"source_key": "position.employment_type",    "value": "/Yes"},
+    "emp_parttime":      {"source_key": "position.employment_type",    "value": "/Off"},
+    "emp_contract":      {"source_key": "position.employment_type",    "value": "/Off"},
+    "emp_internship":    {"source_key": "position.employment_type",    "value": "/Off"},
+    "available_from":    {"source_key": "position.available_from",     "value": "2025-02-01"},
+    "salary_expectation":{"source_key": "position.salary_expectation", "value": "75000"},
+    "cover_note":        {"source_key": "cover_note",                  "value": "I am an experienced data engineer with 5+ years building scalable pipelines on Azure and AWS. I am excited by CIED's mission to automate form processing at scale and believe my background in structured data extraction is a strong match for this role."}
+  }
+}

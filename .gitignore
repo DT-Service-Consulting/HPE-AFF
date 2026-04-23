@@ -1,0 +1,48 @@
+# secrets
+.env
+*.env
+!.env.example
+
+# python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# virtual environments
+venv/
+.venv/
+env/
+
+# testing
+.pytest_cache/
+.pytest_tmp/
+pytest-cache-files-*/
+.codex_tmp/
+
+# runtime outputs (generated, not source)
+outputs/
+logs/
+experiment_state/
+
+# data — keep structure, skip generated/downloaded blobs
+data/test_forms/baseline_outputs/
+data/program_cache/
+
+# generated PDFs in runtime output dirs; keep source test forms
+outputs/*.pdf
+archive/prototype_v0/outputs/*.pdf
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

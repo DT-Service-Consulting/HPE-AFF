@@ -1,0 +1,102 @@
+{
+  "run_date": "2026-04-22T21:41:43Z",
+  "model_generator": "Llama-3.3-70B-Instruct",
+  "model_critic": "Llama-4-Maverick-17B-128E-Instruct-FP8",
+  "budget_per_form": 50,
+  "forms": [
+    {
+      "form_name": "form_01_personal_info",
+      "form_id": "form_01",
+      "best_score": 1.0,
+      "best_candidate_id": "08a7f9a1",
+      "best_generation": 0,
+      "pool_size": 2,
+      "elapsed_s": 24.5
+    },
+    {
+      "form_name": "form_02_supplier_registration",
+      "form_id": "form_02",
+      "best_score": 1.0,
+      "best_candidate_id": "d7a34537",
+      "best_generation": 0,
+      "pool_size": 3,
+      "elapsed_s": 31.8
+    },
+    {
+      "form_name": "form_03_product_sheet",
+      "form_id": "form_03",
+      "best_score": 1.0,
+      "best_candidate_id": "3e752bea",
+      "best_generation": 0,
+      "pool_size": 2,
+      "elapsed_s": 33.9
+    },
+    {
+      "form_name": "form_04_compliance_doc",
+      "form_id": "form_04",
+      "best_score": 1.0,
+      "best_candidate_id": "f21d80f6",
+      "best_generation": 0,
+      "pool_size": 3,
+      "elapsed_s": 23.1
+    },
+    {
+      "form_name": "form_05_invoice",
+      "form_id": "form_05",
+      "best_score": 0.8824,
+      "best_candidate_id": "4abdac0d",
+      "best_generation": 0,
+      "pool_size": 4,
+      "elapsed_s": 46.7
+    },
+    {
+      "form_name": "form_06_job_application",
+      "form_id": "form_06",
+      "best_score": 1.0,
+      "best_candidate_id": "9baa81a6",
+      "best_generation": 1,
+      "pool_size": 2,
+      "elapsed_s": 16.7
+    },
+    {
+      "form_name": "form_07_patient_intake",
+      "form_id": "form_07",
+      "best_score": 0.9091,
+      "best_candidate_id": "098abbe1",
+      "best_generation": 0,
+      "pool_size": 2,
+      "elapsed_s": 46.5
+    },
+    {
+      "form_name": "form_08_expense_report",
+      "form_id": "form_08",
+      "best_score": 0.8828,
+      "best_candidate_id": "5b9a1ed5",
+      "best_generation": 1,
+      "pool_size": 3,
+      "elapsed_s": 63.1
+    },
+    {
+      "form_name": "form_09_gdpr_dsr",
+      "form_id": "form_09",
+      "best_score": 1.0,
+      "best_candidate_id": "45edff5a",
+      "best_generation": 0,
+      "pool_size": 3,
+      "elapsed_s": 20.0
+    },
+    {
+      "form_name": "form_10_certificate_of_origin",
+      "form_id": "form_10",
+      "best_score": 0.8125,
+      "best_candidate_id": "2cbd69f4",
+      "best_generation": 0,
+      "pool_size": 4,
+      "elapsed_s": 78.1
+    }
+  ],
+  "aggregate": {
+    "mean_score": 0.9486800000000001,
+    "forms_converged": 6
+  }
+}

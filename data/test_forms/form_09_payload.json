@@ -1,0 +1,42 @@
+{
+  "subject": {
+    "full_name": "Claire Dubois",
+    "email": "claire.dubois@example.fr",
+    "phone": "+33 6 12 34 56 78",
+    "account_ref": "ACC-FR-20190034",
+    "relationship": "Customer"
+  },
+  "request": {
+    "type": "Right of Access",
+    "details": "I request a complete copy of all personal data held about me, including purchase history, communication logs, and any data shared with third parties since my account creation in 2019.",
+    "response_format": "PDF",
+    "identity_verification": "Passport copy"
+  },
+  "declaration": {
+    "signature": "C. Dubois",
+    "date": "2024-11-15"
+  },
+  "_expected_field_mapping": {
+    "full_name":      {"source_key": "subject.full_name",          "value": "Claire Dubois"},
+    "email":          {"source_key": "subject.email",              "value": "claire.dubois@example.fr"},
+    "phone":          {"source_key": "subject.phone",              "value": "+33 6 12 34 56 78"},
+    "account_ref":    {"source_key": "subject.account_ref",        "value": "ACC-FR-20190034"},
+    "relationship":   {"source_key": "subject.relationship",       "value": "Customer"},
+    "req_access":         {"source_key": "request.type",           "value": "/Yes"},
+    "req_rectification":  {"source_key": "request.type",           "value": "/Off"},
+    "req_erasure":        {"source_key": "request.type",           "value": "/Off"},
+    "req_restriction":    {"source_key": "request.type",           "value": "/Off"},
+    "req_portability":    {"source_key": "request.type",           "value": "/Off"},
+    "req_object":         {"source_key": "request.type",           "value": "/Off"},
+    "request_details": {"source_key": "request.details",           "value": "I request a complete copy of all personal data held about me, including purchase history, communication logs, and any data shared with third parties since my account creation in 2019."},
+    "fmt_pdf":         {"source_key": "request.response_format",   "value": "/Yes"},
+    "fmt_csv":         {"source_key": "request.response_format",   "value": "/Off"},
+    "fmt_email":       {"source_key": "request.response_format",   "value": "/Off"},
+    "fmt_post":        {"source_key": "request.response_format",   "value": "/Off"},
+    "id_passport":     {"source_key": "request.identity_verification","value": "/Yes"},
+    "id_national_id":  {"source_key": "request.identity_verification","value": "/Off"},
+    "id_utility_bill": {"source_key": "request.identity_verification","value": "/Off"},
+    "signature":       {"source_key": "declaration.signature",     "value": "C. Dubois"},
+    "date":            {"source_key": "declaration.date",          "value": "2024-11-15"}
+  }
+}

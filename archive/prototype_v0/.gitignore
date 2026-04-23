@@ -1,0 +1,11 @@
+﻿__pycache__/
+*.py[cod]
+
+outputs/
+
+.env
+.env.*
+!.env.example
+
+.venv/
+venv/

@@ -1,0 +1,48 @@
+{
+  "manufacturer": {
+    "name": "Bosch Rexroth AG",
+    "address": "Maria-Theresien-Str. 23, 97816 Lohr am Main, Germany",
+    "auth_rep": "N/A (EU-based)"
+  },
+  "product": {
+    "name": "IndraDrive C HCS02.1E",
+    "model_type": "HCS02.1E-W0028-A-03-NNNN",
+    "serial_no": "BX-2024-003421",
+    "year_mfr": "2024"
+  },
+  "directives": {
+    "lvd": true,
+    "emc": true,
+    "mach": false,
+    "rohs": true,
+    "reach": true,
+    "gpsr": false
+  },
+  "notified_body": "TÜV Rheinland GmbH",
+  "nb_cert_no": "TUV-0035-2024-HC",
+  "declaration": {
+    "place_date": "Lohr am Main, 2024-11-15",
+    "signature": "Dr. H. Weber",
+    "signatory_name": "Dr. Hans Weber, VP Engineering"
+  },
+  "_expected_field_mapping": {
+    "mfr_name":      {"source_key": "manufacturer.name",        "value": "Bosch Rexroth AG"},
+    "mfr_address":   {"source_key": "manufacturer.address",     "value": "Maria-Theresien-Str. 23, 97816 Lohr am Main, Germany"},
+    "auth_rep":      {"source_key": "manufacturer.auth_rep",    "value": "N/A (EU-based)"},
+    "prod_name":     {"source_key": "product.name",             "value": "IndraDrive C HCS02.1E"},
+    "model_type":    {"source_key": "product.model_type",       "value": "HCS02.1E-W0028-A-03-NNNN"},
+    "serial_no":     {"source_key": "product.serial_no",        "value": "BX-2024-003421"},
+    "year_mfr":      {"source_key": "product.year_mfr",         "value": "2024"},
+    "dir_lvd":       {"source_key": "directives.lvd",           "value": "/Yes"},
+    "dir_emc":       {"source_key": "directives.emc",           "value": "/Yes"},
+    "dir_mach":      {"source_key": "directives.mach",          "value": "/Off"},
+    "dir_rohs":      {"source_key": "directives.rohs",          "value": "/Yes"},
+    "dir_reach":     {"source_key": "directives.reach",         "value": "/Yes"},
+    "dir_gpsr":      {"source_key": "directives.gpsr",          "value": "/Off"},
+    "notified_body": {"source_key": "notified_body",            "value": "TÜV Rheinland GmbH"},
+    "nb_cert_no":    {"source_key": "nb_cert_no",               "value": "TUV-0035-2024-HC"},
+    "place_date":    {"source_key": "declaration.place_date",   "value": "Lohr am Main, 2024-11-15"},
+    "signature":     {"source_key": "declaration.signature",    "value": "Dr. H. Weber"},
+    "signatory_name":{"source_key": "declaration.signatory_name","value": "Dr. Hans Weber, VP Engineering"}
+  }
+}

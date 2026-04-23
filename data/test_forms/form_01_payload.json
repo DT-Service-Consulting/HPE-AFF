@@ -1,0 +1,33 @@
+{
+  "person": {
+    "last_name": "Schmidt",
+    "first_name": "Anna",
+    "middle_name": "Marie",
+    "email": "anna.schmidt@example.de",
+    "phone": "+49 30 12345678",
+    "dob": "1990-03-15",
+    "nationality": "German",
+    "gender": "Female",
+    "preferred_contact": "Email"
+  },
+  "signature": "A. Schmidt",
+  "date": "2024-11-15",
+  "_expected_field_mapping": {
+    "last_name":        {"source_key": "person.last_name",       "value": "Schmidt"},
+    "first_name":       {"source_key": "person.first_name",      "value": "Anna"},
+    "middle_name":      {"source_key": "person.middle_name",     "value": "Marie"},
+    "email":            {"source_key": "person.email",           "value": "anna.schmidt@example.de"},
+    "phone":            {"source_key": "person.phone",           "value": "+49 30 12345678"},
+    "dob":              {"source_key": "person.dob",             "value": "1990-03-15"},
+    "nationality":      {"source_key": "person.nationality",     "value": "German"},
+    "gender_male":      {"source_key": "person.gender",          "value": "/Off"},
+    "gender_female":    {"source_key": "person.gender",          "value": "/Yes"},
+    "gender_nonbinary": {"source_key": "person.gender",          "value": "/Off"},
+    "gender_other":     {"source_key": "person.gender",          "value": "/Off"},
+    "contact_email":    {"source_key": "person.preferred_contact","value": "/Yes"},
+    "contact_phone":    {"source_key": "person.preferred_contact","value": "/Off"},
+    "contact_post":     {"source_key": "person.preferred_contact","value": "/Off"},
+    "signature":        {"source_key": "signature",              "value": "A. Schmidt"},
+    "date":             {"source_key": "date",                   "value": "2024-11-15"}
+  }
+}

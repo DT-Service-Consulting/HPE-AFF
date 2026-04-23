@@ -1,0 +1,179 @@
+{
+  "run_date": "2026-04-22T21:18:31.774230+00:00",
+  "model_deployment": "local_heuristic_v1",
+  "architecture": "prototype_v1_heuristic",
+  "phase": 1,
+  "forms": [
+    {
+      "form_id": "form_01",
+      "form_name": "form_01_personal_info",
+      "total_fields": 16,
+      "expected_mappings": 16,
+      "fields_attempted": 16,
+      "fields_correct": 14,
+      "field_accuracy": 0.875,
+      "failure_modes": {
+        "missing": 0,
+        "semantic_mismatch": 0,
+        "format_error": 0,
+        "wrong_checkbox_state": 2
+      },
+      "notes": "Heuristic mode (no Azure). "
+    },
+    {
+      "form_id": "form_02",
+      "form_name": "form_02_supplier_registration",
+      "total_fields": 20,
+      "expected_mappings": 20,
+      "fields_attempted": 20,
+      "fields_correct": 17,
+      "field_accuracy": 0.85,
+      "failure_modes": {
+        "missing": 0,
+        "semantic_mismatch": 2,
+        "format_error": 0,
+        "wrong_checkbox_state": 1
+      },
+      "notes": "Heuristic mode (no Azure). "
+    },
+    {
+      "form_id": "form_03",
+      "form_name": "form_03_product_sheet",
+      "total_fields": 24,
+      "expected_mappings": 24,
+      "fields_attempted": 24,
+      "fields_correct": 24,
+      "field_accuracy": 1.0,
+      "failure_modes": {
+        "missing": 0,
+        "semantic_mismatch": 0,
+        "format_error": 0,
+        "wrong_checkbox_state": 0
+      },
+      "notes": "Heuristic mode (no Azure). "
+    },
+    {
+      "form_id": "form_04",
+      "form_name": "form_04_compliance_doc",
+      "total_fields": 18,
+      "expected_mappings": 18,
+      "fields_attempted": 18,
+      "fields_correct": 18,
+      "field_accuracy": 1.0,
+      "failure_modes": {
+        "missing": 0,
+        "semantic_mismatch": 0,
+        "format_error": 0,
+        "wrong_checkbox_state": 0
+      },
+      "notes": "Heuristic mode (no Azure). "
+    },
+    {
+      "form_id": "form_05",
+      "form_name": "form_05_invoice",
+      "total_fields": 51,
+      "expected_mappings": 51,
+      "fields_attempted": 45,
+      "fields_correct": 20,
+      "field_accuracy": 0.3922,
+      "failure_modes": {
+        "missing": 6,
+        "semantic_mismatch": 25,
+        "format_error": 0,
+        "wrong_checkbox_state": 0
+      },
+      "notes": "Heuristic mode (no Azure). "
+    },
+    {
+      "form_id": "form_06",
+      "form_name": "form_06_job_application",
+      "total_fields": 16,
+      "expected_mappings": 16,
+      "fields_attempted": 16,
+      "fields_correct": 15,
+      "field_accuracy": 0.9375,
+      "failure_modes": {
+        "missing": 0,
+        "semantic_mismatch": 0,
+        "format_error": 0,
+        "wrong_checkbox_state": 1
+      },
+      "notes": "Heuristic mode (no Azure). "
+    },
+    {
+      "form_id": "form_07",
+      "form_name": "form_07_patient_intake",
+      "total_fields": 33,
+      "expected_mappings": 33,
+      "fields_attempted": 27,
+      "fields_correct": 14,
+      "field_accuracy": 0.4242,
+      "failure_modes": {
+        "missing": 5,
+        "semantic_mismatch": 6,
+        "format_error": 0,
+        "wrong_checkbox_state": 8
+      },
+      "notes": "Heuristic mode (no Azure). "
+    },
+    {
+      "form_id": "form_08",
+      "form_name": "form_08_expense_report",
+      "total_fields": 64,
+      "expected_mappings": 64,
+      "fields_attempted": 58,
+      "fields_correct": 21,
+      "field_accuracy": 0.3281,
+      "failure_modes": {
+        "missing": 6,
+        "semantic_mismatch": 37,
+        "format_error": 0,
+        "wrong_checkbox_state": 0
+      },
+      "notes": "Heuristic mode (no Azure). "
+    },
+    {
+      "form_id": "form_09",
+      "form_name": "form_09_gdpr_dsr",
+      "total_fields": 21,
+      "expected_mappings": 21,
+      "fields_attempted": 21,
+      "fields_correct": 18,
+      "field_accuracy": 0.8571,
+      "failure_modes": {
+        "missing": 0,
+        "semantic_mismatch": 0,
+        "format_error": 0,
+        "wrong_checkbox_state": 3
+      },
+      "notes": "Heuristic mode (no Azure). "
+    },
+    {
+      "form_id": "form_10",
+      "form_name": "form_10_certificate_of_origin",
+      "total_fields": 64,
+      "expected_mappings": 64,
+      "fields_attempted": 52,
+      "fields_correct": 28,
+      "field_accuracy": 0.4375,
+      "failure_modes": {
+        "missing": 6,
+        "semantic_mismatch": 29,
+        "format_error": 0,
+        "wrong_checkbox_state": 1
+      },
+      "notes": "Heuristic mode (no Azure). "
+    }
+  ],
+  "aggregate": {
+    "mean_field_accuracy": 0.7102,
+    "forms_fully_correct": 2,
+    "top_failure_mode": "semantic_mismatch",
+    "total_failure_breakdown": {
+      "missing": 23,
+      "semantic_mismatch": 99,
+      "format_error": 0,
+      "wrong_checkbox_state": 16
+    }
+  }
+}

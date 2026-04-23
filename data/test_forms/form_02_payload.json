@@ -1,0 +1,48 @@
+{
+  "entity": {
+    "legal_name": "Primus Components BV",
+    "trading_name": "Primus Tech",
+    "reg_number": "KVK-12345678",
+    "vat_number": "NL123456789B01",
+    "industry_sector": "Electronics Manufacturing",
+    "country": "Netherlands",
+    "website": "https://primustech.nl"
+  },
+  "contacts": [
+    {
+      "name": "Jan de Vries",
+      "title": "Procurement Manager",
+      "email": "j.devries@primustech.nl",
+      "phone": "+31 20 5551234"
+    }
+  ],
+  "banking": {
+    "bank_name": "ING Bank",
+    "account_holder": "Primus Components BV",
+    "iban": "NL91 ABNA 0417 1643 00",
+    "bic_swift": "INGBNL2A",
+    "currency": "EUR"
+  },
+  "_expected_field_mapping": {
+    "company_name":   {"source_key": "entity.legal_name",        "value": "Primus Components BV"},
+    "trading_name":   {"source_key": "entity.trading_name",      "value": "Primus Tech"},
+    "reg_number":     {"source_key": "entity.reg_number",        "value": "KVK-12345678"},
+    "vat_number":     {"source_key": "entity.vat_number",        "value": "NL123456789B01"},
+    "industry_sector":{"source_key": "entity.industry_sector",   "value": "Electronics Manufacturing"},
+    "country":        {"source_key": "entity.country",           "value": "Netherlands"},
+    "website":        {"source_key": "entity.website",           "value": "https://primustech.nl"},
+    "contact_name":   {"source_key": "contacts[0].name",         "value": "Jan de Vries"},
+    "contact_title":  {"source_key": "contacts[0].title",        "value": "Procurement Manager"},
+    "contact_email":  {"source_key": "contacts[0].email",        "value": "j.devries@primustech.nl"},
+    "contact_phone":  {"source_key": "contacts[0].phone",        "value": "+31 20 5551234"},
+    "bank_name":      {"source_key": "banking.bank_name",        "value": "ING Bank"},
+    "acct_holder":    {"source_key": "banking.account_holder",   "value": "Primus Components BV"},
+    "iban":           {"source_key": "banking.iban",             "value": "NL91 ABNA 0417 1643 00"},
+    "bic_swift":      {"source_key": "banking.bic_swift",        "value": "INGBNL2A"},
+    "currency_eur":   {"source_key": "banking.currency",         "value": "/Yes"},
+    "currency_usd":   {"source_key": "banking.currency",         "value": "/Off"},
+    "currency_gbp":   {"source_key": "banking.currency",         "value": "/Off"},
+    "currency_chf":   {"source_key": "banking.currency",         "value": "/Off"},
+    "currency_other": {"source_key": "banking.currency",         "value": "/Off"}
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "product": {
+    "manufacturer": "Siemens AG",
+    "product_family": "SIMATIC S7",
+    "product_name": "S7-1500 CPU 1515-2 PN",
+    "sku": "6ES7515-2AM02-0AB0",
+    "ean": "4047623959024",
+    "origin_country": "Germany"
+  },
+  "specifications": {
+    "weight": {"value": "0.54", "unit": "kg", "standard": "IEC 60068-2-6", "tolerance": "±5%"},
+    "dimensions": {"value": "147x129x129", "unit": "mm", "standard": "IEC 61010-1", "tolerance": "±1mm"},
+    "voltage": {"value": "24", "unit": "VDC", "standard": "IEC 61131-2", "tolerance": "±20%"},
+    "power": {"value": "14.4", "unit": "W", "standard": "IEC 61131-2", "tolerance": "±10%"},
+    "temp_range": {"value": "-40...+70", "unit": "°C", "standard": "IEC 60068-2-14", "tolerance": "±2°C"},
+    "ip_rating": {"value": "IP20", "unit": "-", "standard": "IEC 60529", "tolerance": "N/A"}
+  },
+  "_expected_field_mapping": {
+    "manufacturer":         {"source_key": "product.manufacturer",               "value": "Siemens AG"},
+    "product_family":       {"source_key": "product.product_family",             "value": "SIMATIC S7"},
+    "product_name":         {"source_key": "product.product_name",               "value": "S7-1500 CPU 1515-2 PN"},
+    "sku":                  {"source_key": "product.sku",                        "value": "6ES7515-2AM02-0AB0"},
+    "ean":                  {"source_key": "product.ean",                        "value": "4047623959024"},
+    "origin_country":       {"source_key": "product.origin_country",             "value": "Germany"},
+    "spec_weight_unit":     {"source_key": "specifications.weight.unit",         "value": "kg"},
+    "spec_weight_standard": {"source_key": "specifications.weight.standard",     "value": "IEC 60068-2-6"},
+    "spec_weight_tolerance":{"source_key": "specifications.weight.tolerance",    "value": "±5%"},
+    "spec_dimensions_unit":     {"source_key": "specifications.dimensions.unit",         "value": "mm"},
+    "spec_dimensions_standard": {"source_key": "specifications.dimensions.standard",     "value": "IEC 61010-1"},
+    "spec_dimensions_tolerance":{"source_key": "specifications.dimensions.tolerance",    "value": "±1mm"},
+    "spec_voltage_unit":     {"source_key": "specifications.voltage.unit",       "value": "VDC"},
+    "spec_voltage_standard": {"source_key": "specifications.voltage.standard",   "value": "IEC 61131-2"},
+    "spec_voltage_tolerance":{"source_key": "specifications.voltage.tolerance",  "value": "±20%"},
+    "spec_power_unit":       {"source_key": "specifications.power.unit",         "value": "W"},
+    "spec_power_standard":   {"source_key": "specifications.power.standard",     "value": "IEC 61131-2"},
+    "spec_power_tolerance":  {"source_key": "specifications.power.tolerance",    "value": "±10%"},
+    "spec_temp_range_unit":      {"source_key": "specifications.temp_range.unit",      "value": "°C"},
+    "spec_temp_range_standard":  {"source_key": "specifications.temp_range.standard",  "value": "IEC 60068-2-14"},
+    "spec_temp_range_tolerance": {"source_key": "specifications.temp_range.tolerance", "value": "±2°C"},
+    "spec_ip_rating_unit":       {"source_key": "specifications.ip_rating.unit",       "value": "-"},
+    "spec_ip_rating_standard":   {"source_key": "specifications.ip_rating.standard",   "value": "IEC 60529"},
+    "spec_ip_rating_tolerance":  {"source_key": "specifications.ip_rating.tolerance",  "value": "N/A"}
+  }
+}
