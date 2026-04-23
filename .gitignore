@@ -46,3 +46,6 @@ archive/prototype_v0/outputs/*.pdf
 # OS
 .DS_Store
 Thumbs.db
+AGENTS.md
+PROJECT_GRAPH.md
+.env.*

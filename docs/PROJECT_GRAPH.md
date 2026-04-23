@@ -66,13 +66,12 @@ HPE-AFF/
 │
 ├── docs/
 │   ├── PROJECT_GRAPH.md          this file
-│   ├── baseline_results.json     Phase 1 (71% avg field accuracy)
-│   └── evolution_results.json    Phase 2 HPE loop results
+│   ├── baseline_results.json     Phase 1 — 71.02% mean field accuracy
+│   └── evolution_results.json    Phase 2 — 94.87% mean, 6/10 converged ≥92%
 │
 ├── app.py                        Streamlit UI v2 (uses modular packages)
-├── api/app.py                    FastAPI /fill endpoint
 ├── env_config.py                 shared .env loading
-├── run_phase1_baseline.py        reproduce Phase 1 measurement
+├── run_phase1_baseline.py        reproduce Phase 1 measurement (self-contained, no archive dep)
 └── run_phase2_evolution.py       run HPE evolution loop
 ```
 
@@ -151,9 +150,8 @@ flowchart TD
 | Aggregate scoring | `evaluation/scorer.py` | `primitives/` |
 | Evolution orchestration | `evolution/loop.py` | `evaluation/`, `synthesis/`, `execution/` |
 | Streamlit UI | `app.py` | all modules |
-| REST API | `api/app.py` | all modules |
 | Env loading | `env_config.py` | nothing |
-| Baseline repro | `run_phase1_baseline.py` | `archive/prototype_v0/` paths (read-only) |
+| Baseline repro | `run_phase1_baseline.py` | stdlib + pypdf only (self-contained) |
 | Phase 2 repro | `run_phase2_evolution.py` | `evolution/`, `synthesis/`, `execution/` |
 
 ---
@@ -177,8 +175,8 @@ No module imports from a sibling at the same level. Everything bottoms out at `p
 | Phase | Outcome | Artefact |
 |---|---|---|
 | 0 — prototype | Monolithic working demo | `archive/prototype_v0/` |
-| 1 — baseline | 71% avg field accuracy measured | `docs/baseline_results.json` |
-| 2 — HPE rebuild | Modular refactor + evolution loop | current repo layout |
+| 1 — baseline | 71.02% mean field accuracy | `docs/baseline_results.json` |
+| 2 — HPE rebuild | 94.87% mean, 6/10 converged ≥92% | `docs/evolution_results.json` |
 
 ---
 
