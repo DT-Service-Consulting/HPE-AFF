@@ -4,8 +4,7 @@
 **This file is for Claude Code. Read it completely before touching any code.**
 
 Fast orientation: after reading this file, use `docs/PROJECT_GRAPH.md` for the current
-repo topology, nested Git layout, runnable prototype flow, and current-vs-target
-architecture map.
+repo topology, module ownership, and call chains.
 
 ---
 
@@ -23,34 +22,42 @@ once per form family; production runs execute `PF` directly — no LLM call at f
 
 ---
 
-## 1. Two-phase execution strategy
-
-### ⚠ Do not start Phase 2 until Phase 1 baseline scores are recorded.
+## 1. Two-phase execution strategy — BOTH PHASES COMPLETE
 
 ```
-Phase 1 — Baseline measurement  (existing prototype, no refactor)
-  → Run existing system against all 10 test forms
-  → Record per-form field accuracy scores
-  → Identify top failure modes
-  → Write docs/baseline_results.json
+Phase 1 — Baseline measurement  ✓ DONE
+  → Ran prototype against all 10 test forms
+  → 71% average field accuracy (heuristic mapping, no DI)
+  → Results: docs/baseline_results.json
 
-Phase 2 — HPE refactor  (only after Phase 1 complete)
-  → Extend existing codebase in-place
-  → Add primitives/, evaluation/, evolution/, document_intelligence/
-  → Re-run same 10 forms; compare to Phase 1 scores
+Phase 2 — HPE refactor  ✓ DONE
+  → Modular rebuild: primitives/, evaluation/, evolution/, synthesis/,
+    execution/, document_intelligence/
+  → HPE evolution loop running with generator/critic
+  → Results: docs/evolution_results.json
+  → Prototype archived to archive/prototype_v0/
 ```
 
-The evolution loop needs a score to optimise toward. Building it before the baseline
-exists produces a loop with no signal.
+Current work: DI integration checkpoint + synthesis/evolution with Azure.
+See `docs/PROJECT_GRAPH.md` for next steps.
 
 ---
 
-## 2. Repository layout (target — after Phase 2)
+## 2. Repository layout (current)
 
 ```
-Router_Testing/
+HPE-AFF/
 │
+├── README.md                        ← project overview + quickstart
 ├── AGENTS.md                        ← this file
+│
+├── archive/
+│   └── prototype_v0/                ← original monolith (do not import from new code)
+│       ├── core_logic.py            # prototype engine, now decomposed
+│       ├── app.py                   # prototype Streamlit UI
+│       ├── intelligent_router.py
+│       ├── run_experiment.py / run_hybrid_system.py
+│       └── generate_test_forms.py
 │
 ├── data/
 │   ├── test_forms/                  ← 10 blank PDFs + 10 payload JSONs
@@ -74,14 +81,16 @@ Router_Testing/
 │   │   ├── form_09_payload.json
 │   │   ├── form_10_certificate_of_origin.pdf  (64 fields: 2-page, goods table)
 │   │   └── form_10_payload.json
-│   ├── eval_dataset/                ← D = {F_empty, x_payload, m_metadata} (Phase 2)
-│   └── program_cache/               ← serialised PF programs keyed by hash (Phase 2)
+│   ├── eval_dataset/                ← D = {F_empty, x_payload, m_metadata}
+│   └── program_cache/               ← serialised PF programs keyed by hash
 │
 ├── docs/
+│   ├── PROJECT_GRAPH.md             ← agent orientation map (module ownership, call chains)
 │   ├── HPE_AFF_Expansion_Roadmap.md ← research/grant document, read-only
-│   └── baseline_results.json        ← write this in Phase 1 before anything else
+│   ├── baseline_results.json        ← Phase 1 results (71% avg field accuracy)
+│   └── evolution_results.json       ← Phase 2 HPE loop results
 │
-├── document_intelligence/           ← Phase 2: Azure DI integration layer
+├── document_intelligence/           ← Azure DI integration layer
 │   ├── __init__.py
 │   ├── client.py                    # DocumentAnalysisClient wrapper
 │   ├── layout_extractor.py          # prebuilt-layout → field geometry
@@ -90,7 +99,7 @@ Router_Testing/
 │   ├── annotation_repair.py         # repair bad/missing AcroForm annotations using DI output
 │   └── content_understanding.py     # Content Understanding API (2025-11-01) for complex docs
 │
-├── primitives/                      ← Phase 2: shared library L
+├── primitives/                      ← shared library L (no external dependencies)
 │   ├── __init__.py
 │   ├── fields.py                    # fill_text_field, fill_checkbox, fill_table_row, set_radio
 │   ├── transforms.py                # apply_date_transform, apply_number_transform, apply_currency_transform
@@ -98,18 +107,18 @@ Router_Testing/
 │   ├── inspect.py                   # detect_field_type, compute_overflow
 │   └── visual.py                    # visual_coord_extraction — GPT-4o multimodal fallback
 │
-├── synthesis/                       ← Phase 2: GF(F, θF, L)
+├── synthesis/                       ← GF(F, θF, L)
 │   ├── generator.py
 │   ├── assembler.py
 │   └── program_cache.py
 │
-├── evolution/                       ← Phase 2: GEPA-style candidate pool
+├── evolution/                       ← GEPA-style candidate pool
 │   ├── candidate.py
 │   ├── pool.py
 │   ├── mutate.py
 │   └── loop.py
 │
-├── evaluation/                      ← Phase 2: μ(ŷ, m) → (score, trace)
+├── evaluation/                      ← μ(ŷ, m) → (score, trace)
 │   ├── scorer.py
 │   ├── structural.py
 │   ├── semantic.py
@@ -117,12 +126,17 @@ Router_Testing/
 │   ├── format_check.py
 │   └── dataset.py
 │
-├── execution/                       ← Phase 2: EXEC(PF, F, x)
+├── execution/                       ← EXEC(PF, F, x)
 │   ├── executor.py
 │   ├── writer.py
 │   └── verify.py
 │
-├── [existing code]                  ← router, CLI, Streamlit — do not rename or move
+├── app.py                           ← Streamlit UI v2
+├── api/app.py                       ← FastAPI /fill endpoint
+├── env_config.py                    ← shared .env loading
+│
+├── run_phase1_baseline.py           ← reproduce Phase 1 measurement
+├── run_phase2_evolution.py          ← run HPE evolution loop
 │
 ├── experiment_state/
 ├── logs/
@@ -311,9 +325,10 @@ AFF_DI_ENABLED=true        # set false to skip DI calls during unit tests
 
 ---
 
-## 5. Phase 1 — Baseline measurement
+## 5. Phase 1 — Baseline measurement  ✓ COMPLETE
 
-**Write `docs/baseline_results.json` before any code changes.**
+Results in `docs/baseline_results.json`. Average field accuracy: 71% (heuristic, no DI).
+This section is preserved for historical reference and to allow baseline reproduction.
 
 ### Task 1.1 — Verify write-back is working
 
@@ -380,9 +395,9 @@ PDF. Read back field values via `PdfReader.get_fields()`. Compare to expected ma
 
 ---
 
-## 6. Phase 2 — HPE refactor build order
+## 6. Phase 2 — HPE refactor build order  ✓ COMPLETE
 
-Build strictly in this dependency order. Do not skip ahead.
+All steps complete. Preserved for reference and to understand module dependency order.
 
 ```
 Step 1:  primitives/fields.py            fill_text_field, fill_checkbox, fill_table_row
@@ -717,28 +732,31 @@ Response 200:
 
 ## 12. Quick-start for a new Claude Code session
 
-```bash
-# 1. Check state
-ls docs/baseline_results.json 2>/dev/null && echo "Phase 1 done" || echo "Phase 1 needed"
+Both phases complete. Use this to orient before touching any code.
 
-# 2. Confirm test forms accessible and have fields
-python3 -c "
-from pypdf import PdfReader
-for i in range(1, 11):
-    forms = {
-        1:'personal_info', 2:'supplier_registration', 3:'product_sheet',
-        4:'compliance_doc', 5:'invoice', 6:'job_application',
-        7:'patient_intake', 8:'expense_report', 9:'gdpr_dsr',
-        10:'certificate_of_origin'
-    }
-    path = f'data/test_forms/form_{str(i).zfill(2)}_{forms[i]}.pdf'
-    r = PdfReader(path)
-    fields = r.get_fields() or {}
-    print(f'form_{str(i).zfill(2)}: {len(fields)} fields')
-"
+```bash
+# 1. Orient
+cat README.md
+cat docs/PROJECT_GRAPH.md   # module ownership + dependency rules
+
+# 2. Verify environment
+cp .env.example .env        # if .env missing — fill Azure credentials
+python -c "from env_config import ensure_env_loaded; ensure_env_loaded(); print('env ok')"
 
 # 3. Run tests
 pytest tests/ -v
 
-# 4. Proceed: Phase 1 if baseline_results.json missing, else next Phase 2 step
+# 4. Check phase results
+cat docs/baseline_results.json    # Phase 1: 71% avg accuracy
+cat docs/evolution_results.json   # Phase 2: HPE loop results
+
+# 5. Reproduce runs if needed
+python run_phase1_baseline.py     # re-run Phase 1
+python run_phase2_evolution.py    # re-run Phase 2 HPE loop
+
+# 6. UI / API
+python -m streamlit run app.py
+uvicorn api.app:app --reload
 ```
+
+**Do not import from `archive/prototype_v0/`.** It is reference only.
