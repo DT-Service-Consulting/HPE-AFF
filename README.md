@@ -55,20 +55,20 @@ HPE-AFF/
 
 ## Environment setup
 
-Create `.env` in the repo root. Never commit it.
+Create `.env` in the repo root
 
 ```bash
 # Azure LLM (required for synthesis + evolution)
 AZURE_AI_ENDPOINT=https://your-resource.services.ai.azure.com/
 AZURE_AI_KEY=your-key-here
-AZURE_MODEL_GENERATOR=Llama-3.3-70B-Instruct        # or any chat deployment
-AZURE_MODEL_CRITIC=Llama-4-Maverick-17B-128E-Instruct-FP8
+AZURE_MODEL_GENERATOR=
+AZURE_MODEL_CRITIC=
 
 # Azure OpenAI aliases (accepted if above not set)
 # AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
 # AZURE_OPENAI_API_KEY=your-key-here
-# AZURE_OPENAI_DEPLOYMENT_GPT4O=gpt-4o
-# AZURE_OPENAI_DEPLOYMENT_GPT35=gpt-35-turbo
+# AZURE_OPENAI_DEPLOYMENT_GPT4O=
+# AZURE_OPENAI_DEPLOYMENT_GPT35=
 
 # Azure Document Intelligence (required for DI annotation repair)
 AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT=https://your-di-resource.cognitiveservices.azure.com/
@@ -84,8 +84,8 @@ AFF_DI_ENABLED=true        # set false to skip DI calls (unit tests / no DI reso
 ```
 
 Where to find Azure values:
-- **Endpoint + Key**: Azure Portal → your AI Foundry / Cognitive Services resource → Keys and Endpoint
-- **Model deployment names**: Azure AI Foundry → Deployments tab
+- **Endpoint + Key**: Azure Portal → your Microsoft Foundry / Cognitive Services resource → Keys and Endpoint
+- **Model deployment names**: Microsoft AI Foundry → Deployments tab
 - **DI endpoint + key**: Azure Portal → Document Intelligence resource → Keys and Endpoint
 
 Run without Azure: set `AFF_DI_ENABLED=false` and omit DI vars. Evolution loop falls back to local heuristic (Phase 1 behavior).
