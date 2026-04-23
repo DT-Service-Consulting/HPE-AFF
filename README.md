@@ -25,7 +25,6 @@ primitives/ evaluation/ evolution/ synthesis/ execution/ document_intelligence/
 ```
 HPE-AFF/
 ├── README.md                     ← this file
-├── AGENTS.md                     ← system design, constraints, build order
 │
 ├── archive/
 │   └── prototype_v0/             ← original monolith (pdf-form-ettc-azure)
@@ -43,16 +42,53 @@ HPE-AFF/
 ├── tests/
 │
 ├── docs/
-│   ├── PROJECT_GRAPH.md          ← agent orientation map
 │   ├── baseline_results.json     ← Phase 1 results (71% avg field accuracy)
 │   └── evolution_results.json    ← Phase 2 HPE loop results
 │
 ├── app.py                        ← Streamlit UI (v2, uses modular packages)
-├── api/                          ← FastAPI /fill endpoint
 ├── env_config.py                 ← shared env loading
 ├── run_phase1_baseline.py        ← reproduce Phase 1 measurement
 └── run_phase2_evolution.py       ← run HPE evolution loop
 ```
+
+---
+
+## Environment setup
+
+Create `.env` in the repo root. Never commit it.
+
+```bash
+# Azure LLM (required for synthesis + evolution)
+AZURE_AI_ENDPOINT=https://your-resource.services.ai.azure.com/
+AZURE_AI_KEY=your-key-here
+AZURE_MODEL_GENERATOR=Llama-3.3-70B-Instruct        # or any chat deployment
+AZURE_MODEL_CRITIC=Llama-4-Maverick-17B-128E-Instruct-FP8
+
+# Azure OpenAI aliases (accepted if above not set)
+# AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+# AZURE_OPENAI_API_KEY=your-key-here
+# AZURE_OPENAI_DEPLOYMENT_GPT4O=gpt-4o
+# AZURE_OPENAI_DEPLOYMENT_GPT35=gpt-35-turbo
+
+# Azure Document Intelligence (required for DI annotation repair)
+AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT=https://your-di-resource.cognitiveservices.azure.com/
+AZURE_DOCUMENT_INTELLIGENCE_KEY=your-key-here
+
+# HPE-AFF paths (defaults shown — change only if layout differs)
+AFF_POOL_PATH=./experiment_state/candidate_pool.json
+AFF_DATASET_PATH=./data/eval_dataset/
+AFF_PROGRAM_CACHE_PATH=./data/program_cache/
+AFF_EVOLUTION_BUDGET=50
+AFF_LOG_LEVEL=INFO
+AFF_DI_ENABLED=true        # set false to skip DI calls (unit tests / no DI resource)
+```
+
+Where to find Azure values:
+- **Endpoint + Key**: Azure Portal → your AI Foundry / Cognitive Services resource → Keys and Endpoint
+- **Model deployment names**: Azure AI Foundry → Deployments tab
+- **DI endpoint + key**: Azure Portal → Document Intelligence resource → Keys and Endpoint
+
+Run without Azure: set `AFF_DI_ENABLED=false` and omit DI vars. Evolution loop falls back to local heuristic (Phase 1 behavior).
 
 ---
 
@@ -67,12 +103,7 @@ python run_phase2_evolution.py
 
 # Streamlit UI
 python -m streamlit run app.py
-
-# FastAPI
-uvicorn api.app:app --reload
 ```
-
-Copy `.env.example` → `.env` and fill Azure credentials before running.
 
 ---
 
@@ -87,7 +118,7 @@ Copy `.env.example` → `.env` and fill Azure credentials before running.
 
 ## Key design decisions
 
-See `AGENTS.md` for full constraints. Short version:
+Short version:
 
 - `PF` (filling program) is synthesised once per form family, cached, then executed cheaply at fill time.
 - Phase 1 must be measured before Phase 2 begins — the evolution loop needs a score to optimise toward.
